@@ -1,9 +1,13 @@
 let playerChoice;
 let computerChoice;
 let result;
+let playerScore = 0;
+let computerScore = 0;
 
 const resultText = document.querySelector(".resultText");
 const resultCircle = document.querySelector(".resultCircle");
+const playerScoreE1 = document.querySelector("#playerScore");
+const computerScoreE1 = document.querySelector("#computerScore");
 resultText.textContent = "";
 
 // 1. When player chooses rock, paper or scissors
@@ -12,16 +16,26 @@ const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
 function congratulateWinner() {
+  resultCircle.classList.remove("win", "lose", "tie");
+  resultCircle.style.animation = "none";
+  resultCircle.offsetHeight;
+  resultCircle.style.animation = null;
+
   if (result === "player") {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Congratulations! You won.`;
-    resultCircle.style.backgroundColor = "#214920";
+    resultCircle.classList.add("win");
+    playerScore++;
   } else if (result === "computer") {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Better luck next time! You lost.`;
-    resultCircle.style.backgroundColor = "#631717";
+    resultCircle.classList.add("lose");
+    computerScore++;
   } else {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. It's a tie! Care for another round?`;
-    resultCircle.style.backgroundColor = "#887A1C";
+    resultCircle.classList.add("tie");
   }
+
+  playerScoreE1.textContent = playerScore;
+  computerScoreE1.textContent = computerScore;
 }
 
 function chooseForComputer() {
