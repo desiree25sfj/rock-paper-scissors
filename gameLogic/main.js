@@ -14,17 +14,17 @@ const scissorsButton = document.querySelector("#scissors");
 function congratulateWinner() {
   if (result === "player") {
     // console.log("Congratulations! You won.");
-    resultText.textContent = "Congratulations! You won.";
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Congratulations! You won.`;
     // document.body.style = "background: green";
     resultCircle.style.backgroundColor = "#214920";
   } else if (result === "computer") {
     // console.log("Better luck next time! You lost.");
-    resultText.textContent = "Better luck next time! You lost.";
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Better luck next time! You lost.`;
     // document.body.style = "background: red";
     resultCircle.style.backgroundColor = "#631717";
   } else {
     // console.log("It's a tie!");
-    resultText.textContent = "It's a tie!";
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. It's a tie! Care for another round?`;
     // document.body.style = "background: yellow";
     resultCircle.style.backgroundColor = "#887A1C";
   }
