@@ -1,10 +1,10 @@
-const resultText = document.querySelector(".resultText");
-const resultCircle = document.querySelector("resultCircle");
-resultText.textContent = "";
-
 let playerChoice;
 let computerChoice;
 let result;
+
+const resultText = document.querySelector(".resultText");
+const resultCircle = document.querySelector(".resultCircle");
+resultText.textContent = "";
 
 // 1. When player chooses rock, paper or scissors
 const rockButton = document.querySelector("#rock");
@@ -16,17 +16,17 @@ function congratulateWinner() {
     // console.log("Congratulations! You won.");
     resultText.textContent = "Congratulations! You won.";
     // document.body.style = "background: green";
-    resultCircle.style.backgroundcolor = "#214920";
+    resultCircle.style.backgroundColor = "#214920";
   } else if (result === "computer") {
     // console.log("Better luck next time! You lost.");
     resultText.textContent = "Better luck next time! You lost.";
     // document.body.style = "background: red";
-    resultCircle.style.backgroundcolor = "#631717";
+    resultCircle.style.backgroundColor = "#631717";
   } else {
     // console.log("It's a tie!");
     resultText.textContent = "It's a tie!";
     // document.body.style = "background: yellow";
-    resultCircle.style.backgroundcolor = "#887A1C";
+    resultCircle.style.backgroundColor = "#887A1C";
   }
 }
 

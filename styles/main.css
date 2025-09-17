@@ -20,52 +20,72 @@ header {
 .resultCircle {
   width: 300px;
   height: 300px;
-  background-color: #631717;
+  background-color: #1E1E1E;
   border-radius: 50%;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  margin-top: 50px;
+  align-items: center; */
+  margin: 50px auto 50px;
+  position: relative;
 }
 
-.gameButtons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "rock rock" "paper scissors";
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 50px; */
-}
-
-#rock {
-  grid-area: rock;
-  justify-self: center;
-  /* margin-bottom: 10px; */
-}
-
-#paper {
-  grid-area: paper;
-  justify-self: end;
-  margin-right: 20px;
-}
-
-#scissors {
-  grid-area: scissors;
-  justify-self: start;
-  margin-left: 20px;
-}
-
-button {
+.resultCircle button {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: #D9D9D9;
   font-size: 1rem;
   cursor: pointer;
+  position: absolute;
 }
 
+/* .gameButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "rock rock" "paper scissors";
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+} */
+
+#rock {
+  top: 50px;
+  left: 100px;
+  /* transform: translate(-50%, -20%); */
+  /* grid-area: rock;
+  justify-self: center;
+  margin-bottom: 10px; */
+}
+
+#paper {
+  bottom: 50px;
+  left: 40px;
+  /* transform: translate(-50%, -50%); */
+  /* grid-area: paper;
+  justify-self: end;
+  margin-right: 20px; */
+}
+
+#scissors {
+  bottom: 50px;
+  right: 40px;
+  /* transform: translate(50%, -50%); */
+  /* grid-area: scissors;
+  justify-self: start;
+  margin-left: 20px; */
+}
+
+/* .gameButtons button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #D9D9D9;
+  font-size: 1rem;
+  cursor: pointer;
+  position: absolute;
+} */
+
 .resultText {
-  color: #FFFFFF
+  color: #D9D9D9;
 }
