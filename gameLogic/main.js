@@ -1,3 +1,6 @@
+const resultText = document.querySelector(".resultText");
+resultText.textContent = "";
+
 let playerChoice;
 let computerChoice;
 let result;
@@ -9,13 +12,16 @@ const scissorsButton = document.querySelector("#scissors");
 
 function congratulateWinner() {
   if (result === "player") {
-    console.log("Congratulations! You won.");
+    // console.log("Congratulations! You won.");
+    resultText.textContent = "Congratulations! You won.";
     document.body.style = "background: green";
   } else if (result === "computer") {
-    console.log("Better luck next time! You lost.");
+    // console.log("Better luck next time! You lost.");
+    resultText.textContent = "Better luck next time! You lost.";
     document.body.style = "background: red";
   } else {
-    console.log("It's a tie!");
+    // console.log("It's a tie!");
+    resultText.textContent = "It's a tie!";
     document.body.style = "background: yellow";
   }
 }
