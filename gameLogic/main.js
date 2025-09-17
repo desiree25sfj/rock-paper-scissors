@@ -4,6 +4,7 @@ let result;
 let playerScore = 0;
 let computerScore = 0;
 
+const headerText = document.querySelector("header h1");
 const resultText = document.querySelector(".resultText");
 const resultCircle = document.querySelector(".resultCircle");
 const playerScoreE1 = document.querySelector("#playerScore");
