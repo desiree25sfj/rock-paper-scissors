@@ -29,17 +29,20 @@ header {
 
 #rock {
   grid-area: rock;
-  /* justify-self: center; */
+  justify-self: center;
+  margin-bottom: 10px;
 }
 
 #paper {
   grid-area: paper;
-  /* justify-self: end; */
+  justify-self: end;
+  margin-right: 20px;
 }
 
 #scissors {
   grid-area: scissors;
-  /* justify-self: start; */
+  justify-self: start;
+  margin-left: 20px;
 }
 
 button {
