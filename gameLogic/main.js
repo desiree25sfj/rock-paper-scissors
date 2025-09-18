@@ -89,15 +89,15 @@ function congratulateWinner() {
     updateFaviconForWin();
 
     confetti({
-      particleCount: 80,
-      spread: 60,
+      particleCount: 200,
+      spread: 80,
       angle: 60,
       origin: { x: 0, y: 0.8 },
     });
 
     confetti({
-      particleCount: 80,
-      spread: 60,
+      particleCount: 200,
+      spread: 80,
       angle: 120,
       origin: { x: 1, y: 0.8 },
     });
