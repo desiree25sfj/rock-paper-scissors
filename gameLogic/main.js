@@ -26,6 +26,21 @@ function congratulateWinner() {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Congratulations! You won.`;
     resultCircle.classList.add("win");
     playerScore++;
+
+    confetti({
+      particleCount: 80,
+      spread: 60,
+      angle: 60,
+      origin: { x: 0, y: 0.8 }
+    });
+
+    confetti({
+      particleCount: 80,
+      spread: 60,
+      angle: 120,
+      origin: { x: 1, y: 0.8 }
+    });
+
   } else if (result === "computer") {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Better luck next time! You lost.`;
     resultCircle.classList.add("lose");
