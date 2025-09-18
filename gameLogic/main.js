@@ -23,7 +23,7 @@ function congratulateWinner() {
   resultCircle.style.animation = null;
 
   if (result === "player") {
-    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Congratulations! You won.`;
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 🎉 Congratulations, you won! 🥳`;
     resultCircle.classList.add("win");
     playerScore++;
 
@@ -41,12 +41,41 @@ function congratulateWinner() {
       origin: { x: 1, y: 0.8 }
     });
 
+    // Milestone check
+    if (playerScore % 10 === 0 && playerScore > 0) {
+      const duration = 1.2 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#FFD700', '#FFEC8B', '#FFC700'],
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#FFD700', '#FFEC8B', '#FFC700'],
+        });
+
+        if (Date.now() < end) { 
+          requestAnimationFrame(frame);
+        }
+      })();
+
+      resultText.textContent = `🔥 ${playerScore} WINS! You're unstoppable! 🔥`;
+    }
+
   } else if (result === "computer") {
-    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Better luck next time! You lost.`;
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Better luck next time! 🥀 You lost.`;
     resultCircle.classList.add("lose");
     computerScore++;
   } else {
-    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. It's a tie! Care for another round?`;
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. It's a tie! 🤝 Care for another round?`;
     resultCircle.classList.add("tie");
   }
 

@@ -89,7 +89,7 @@ button img {
 }
 
 #rock {
-  top: 50px;
+  top: 40px;
   left: 100px;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
@@ -100,7 +100,7 @@ button img {
 }
 
 #paper {
-  bottom: 50px;
+  bottom: 60px;
   left: 40px;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
@@ -111,7 +111,7 @@ button img {
 }
 
 #scissors {
-  bottom: 50px;
+  bottom: 60px;
   right: 40px;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
