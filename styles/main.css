@@ -35,6 +35,15 @@ header h1 {
   animation: neonPulse 2s infinite ease-in-out alternate;
 }
 
+.crown {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  display: none;
+}
+
 .resultCircle {
   width: 300px;
   height: 300px;

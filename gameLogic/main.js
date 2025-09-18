@@ -45,6 +45,7 @@ function congratulateWinner() {
     if (playerScore % 10 === 0 && playerScore > 0) {
       const duration = 1.2 * 1000;
       const end = Date.now() + duration;
+      document.querySelector(".crown").style.display = "block";
 
       (function frame() {
         confetti({
