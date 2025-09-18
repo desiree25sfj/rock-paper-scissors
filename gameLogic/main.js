@@ -4,6 +4,25 @@ let result;
 let playerScore = 0;
 let computerScore = 0;
 
+// FAVICON STUFF
+const favicon = document.querySelector("link[rel='icon']");
+const defaultEmoji = "✌️";
+const winEmoji = "🎉";
+
+function emojiToFavicon(emoji) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="90" font-size="90">${emoji}</text></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+favicon.href = emojiToFavicon(defaultEmoji);
+
+function updateFaviconForWin() {
+  favicon.href = emojiToFavicon(winEmoji);
+  setTimeout(() => {
+    favicon.href = emojiToFavicon(defaultEmoji);
+  }, 1000);
+}
+
 const headerText = document.querySelector("header h1");
 const resultText = document.querySelector(".resultText");
 const resultCircle = document.querySelector(".resultCircle");
@@ -67,6 +86,7 @@ function congratulateWinner() {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 🎉 Congratulations, you won! 🥳`;
     resultCircle.classList.add("win");
     playerScore++;
+    updateFaviconForWin();
 
     confetti({
       particleCount: 80,
