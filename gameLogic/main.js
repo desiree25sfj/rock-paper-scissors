@@ -16,6 +16,48 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
+// function playBattleAnimation(playerChoice, computerChoice, callback) {
+//   const battle = document.querySelector(".battle");
+//   const playerHand = document.querySelector(".playerHand");
+//   const computerHand = document.querySelector(".computerHand");
+//   const choices = document.querySelector(".choices");
+
+//   choices.style.display = "none";
+
+//   battle.classList.add("show");
+
+//   playerHand.textContent = "✊";
+//   computerHand.textContent = "✊";
+
+//   let count = 0;
+//   const interval = setInterval(() => {
+//     count++;
+//     playerHand.style.transform = "scale(1.2)";
+//     computerHand.style.transform = "scale(1.2)";
+
+//     setTimeout(() => {
+//       playerHand.style.transform = "scale(1)";
+//       computerHand.style.transform = "scale(1)";
+//     }, 150);
+
+//     if (count === 3) {
+//       clearInterval(interval);
+
+//       const emojis = {rock: "✊", paper: "✋", scissors: "✌️" };
+//       playerHand.textContent = emojis[playerChoice];
+//       computerHand.textContent = emojis[computerChoice];
+
+//       setTimeout(() => {
+//         battle.classList.remove("show");
+
+//         choices.style.display ="flex";
+
+//         callback();
+//       }, 1200);
+//     }
+//   }, 600);
+// }
+
 function congratulateWinner() {
   resultCircle.classList.remove("win", "lose", "tie");
   resultCircle.style.animation = "none";
@@ -113,7 +155,9 @@ rockButton.addEventListener("click", () => {
   }
 
   // 4. Congratulate, give condolences, or ask for a rematch
-  congratulateWinner();
+  playBattleAnimation(playerChoice, computerChoice, () => {
+    congratulateWinner();
+  });
 });
 
 paperButton.addEventListener("click", () => {
@@ -130,7 +174,9 @@ paperButton.addEventListener("click", () => {
     result = "player";
   }
 
-  congratulateWinner();
+  playBattleAnimation(playerChoice, computerChoice, () => {
+    congratulateWinner();
+  });
 });
 
 scissorsButton.addEventListener("click", () => {
@@ -147,5 +193,7 @@ scissorsButton.addEventListener("click", () => {
     result = "player";
   }
 
-  congratulateWinner();
+  playBattleAnimation(playerChoice, computerChoice, () => {
+    congratulateWinner();
+  });
 });
