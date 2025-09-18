@@ -14,17 +14,18 @@ header {
   border-bottom: 2px #000000 solid;
   box-shadow: 0 4px 10px #000000;
   height: 80px;
+  margin-bottom: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 @keyframes neonPulse {
-  0%   { text-shadow: 0 0 5px #000, 0 0 15px #4CAF50; }
-  25%  { text-shadow: 0 0 6px #000, 0 0 18px #81C784; }
-  50%  { text-shadow: 0 0 5px #000, 0 0 15px #4CAF50; }
-  75%  { text-shadow: 0 0 6px #000, 0 0 18px #81C784; }
-  100% { text-shadow: 0 0 5px #000, 0 0 15px #4CAF50; }
+  0%   { text-shadow: 0 0 5px #000000, 0 0 15px #4CAF50; }
+  25%  { text-shadow: 0 0 6px #000000, 0 0 18px #81C784; }
+  50%  { text-shadow: 0 0 5px #000000, 0 0 15px #4CAF50; }
+  75%  { text-shadow: 0 0 6px #000000, 0 0 18px #81C784; }
+  100% { text-shadow: 0 0 5px #000000, 0 0 15px #4CAF50; }
 }
 
 header h1 {
