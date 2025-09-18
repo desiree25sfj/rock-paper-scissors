@@ -35,16 +35,16 @@ header h1 {
   animation: neonPulse 2s infinite ease-in-out alternate;
 }
 
-/* .battle {
+.battle {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   gap: 50px;
-  font-size: 3rem;
+  font-size: 4rem;
   opacity: 0;
-  transition: opacity 0.3 ease;
+  transition: opacity 0.3s ease;
 }
 
 .battle.show {
@@ -55,14 +55,14 @@ header h1 {
   display: inline-block;
   transform: scale(1);
   transition: transform 0.3s ease;
-} */
+}
 
 .crown {
   position: absolute;
-  top: -50px;
+  top: -70px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 3rem;
+  font-size: 4rem;
   display: none;
 }
 
@@ -105,9 +105,11 @@ header h1 {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 1px #1E1E1E solid;
-  background-color: #D9D9D9;
-  font-size: 2.5rem;
+  /* border: 1px #1E1E1E solid;
+  background-color: #D9D9D9; */
+  border: none;
+  background-color: transparent;
+  font-size: 4rem;
   cursor: pointer;
   position: absolute;
   display: flex;
@@ -129,8 +131,9 @@ header h1 {
 }
 
 #rock:hover {
-  transform: scale(1.04);
-  box-shadow: 6px 0px 12px #000000;
+  transform: scale(1.1);
+  /* box-shadow: 6px 0px 12px #000000; */
+  text-shadow: 6px 6px 12px #000000;
 }
 
 #paper {
@@ -140,8 +143,9 @@ header h1 {
 }
 
 #paper:hover {
-  transform: scale(1.04);
-  box-shadow: 6px 0px 12px #000000;
+  transform: scale(1.1);
+  /* box-shadow: 6px 0px 12px #000000; */
+  text-shadow: 6px 6px 12px #000000;
 }
 
 #scissors {
@@ -151,8 +155,9 @@ header h1 {
 }
 
 #scissors:hover {
-  transform: scale(1.04);
-  box-shadow: 6px 0px 12px #000000;
+  transform: scale(1.1);
+  /* box-shadow: 6px 0px 12px #000000; */
+  text-shadow: 6px 6px 12px #000000;
 }
 
 .resultText {
