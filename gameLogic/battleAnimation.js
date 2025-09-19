@@ -5,7 +5,6 @@ function playBattleAnimation(playerChoice, computerChoice, callback) {
   const choices = document.querySelector(".gameButtons");
 
   choices.style.display = "none";
-
   battle.classList.add("show");
 
   playerHand.textContent = "✊";
@@ -31,9 +30,7 @@ function playBattleAnimation(playerChoice, computerChoice, callback) {
 
       setTimeout(() => {
         battle.classList.remove("show");
-
         choices.style.display = "flex";
-
         callback();
       }, 650);
     }
