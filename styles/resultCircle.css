@@ -67,6 +67,7 @@
 #paper {
 	bottom: 60px;
 	left: 40px;
+	/* transform: translateX(-50%); */
 	transition: transform 200ms ease, box-shadow 200ms ease;
 }
 

@@ -36,10 +36,43 @@ const buttons = [
 	{ button: scissorsButton, choice: "scissors" },
 ];
 
+buttons.forEach(({button, choice }) => {
+	button.addEventListener("click", () => {
+		handlePlayerChoice(choice);
+	});
+});
+
+function chooseForComputer() {
+	const choices = ["rock", "paper", "scissors",];
+	const randomIndex = Math.floor(Math.random() * choices.length);
+	computerChoice = choices[randomIndex];
+	console.log("Computer chose: " + computerChoice);
+}
+
+// function chooseForComputer() {
+//   const randomNumber = Math.random() * 3;
+//   if (randomNumber < 1) computerChoice = "rock";
+//   else if (randomNumber < 2) computerChoice = "paper";
+//   else computerChoice = "scissors";
+// }
+
 function handlePlayerChoice(playerChoice) {
 	chooseForComputer();
+	console.log("Player chose: " + playerChoice);
 	result = determineResult(playerChoice, computerChoice);
 	playBattleAnimation(playerChoice, computerChoice, () => {
 		congratulateWinner(result, playerChoice, computerChoice, gameElements);
 	});
+}
+
+function determineResult(playerChoice, computerChoice) {
+	if (playerChoice === computerChoice) return "tie";
+	if (
+		(playerChoice === "rock" && computerChoice === "scissors") ||
+		(playerChoice === "paper" && computerChoice === "rock") ||
+		(playerChoice === "scissors" && computerChoice === "paper")
+	) {
+		return "player";
+	}
+	return "computer";
 }
