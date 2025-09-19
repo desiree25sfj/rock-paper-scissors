@@ -1,37 +1,10 @@
+import { updateFaviconForWin, updateFaviconForLoss } from "./favicons.js";
+
 let playerChoice;
 let computerChoice;
 let result;
 let playerScore = 0;
 let computerScore = 0;
-
-// FAVICON STUFF
-const favicon = document.querySelector("link[rel='icon']");
-const defaultEmoji = "✌️";
-const winEmoji = "🎉";
-const loseEmoji = "🥀"
-
-function emojiToFavicon(emoji) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <text y="90" font-size="90">${emoji}</text></svg>`;
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-}
-
-favicon.href = emojiToFavicon(defaultEmoji);
-
-function updateFaviconForWin() {
-  favicon.href = emojiToFavicon(winEmoji);
-  setTimeout(() => {
-    favicon.href = emojiToFavicon(defaultEmoji);
-  }, 1000);
-}
-
-function updateFaviconForLoss() {
-  favicon.href = emojiToFavicon(loseEmoji);
-  setTimeout(() => {
-    favicon.href = emojiToFavicon(defaultEmoji);
-  }, 1000);
-}
-// FAVICON STUFF DONE
 
 const headerText = document.querySelector("header h1");
 const resultText = document.querySelector(".resultText");
@@ -44,6 +17,7 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
+// BATTLE ANIMATION STUFF
 function playBattleAnimation(playerChoice, computerChoice, callback) {
   const battle = document.querySelector(".battle");
   const playerHand = document.querySelector(".playerHand");
@@ -85,6 +59,7 @@ function playBattleAnimation(playerChoice, computerChoice, callback) {
     }
   }, 400);
 }
+// BATTLE ANIMATION STUFF DONE
 
 function congratulateWinner() {
   resultCircle.classList.remove("win", "lose", "tie");
@@ -147,7 +122,6 @@ function congratulateWinner() {
     resultCircle.classList.add("lose");
     computerScore++;
     updateFaviconForLoss();
-
   } else {
     resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 
       It's a tie! 🤝 Care for another round?`;
