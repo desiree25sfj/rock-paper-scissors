@@ -8,9 +8,11 @@ let computerScore = 0;
 const favicon = document.querySelector("link[rel='icon']");
 const defaultEmoji = "✌️";
 const winEmoji = "🎉";
+const loseEmoji = "🥀"
 
 function emojiToFavicon(emoji) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="90" font-size="90">${emoji}</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <text y="90" font-size="90">${emoji}</text></svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
@@ -22,6 +24,14 @@ function updateFaviconForWin() {
     favicon.href = emojiToFavicon(defaultEmoji);
   }, 1000);
 }
+
+function updateFaviconForLoss() {
+  favicon.href = emojiToFavicon(loseEmoji);
+  setTimeout(() => {
+    favicon.href = emojiToFavicon(defaultEmoji);
+  }, 1000);
+}
+// FAVICON STUFF DONE
 
 const headerText = document.querySelector("header h1");
 const resultText = document.querySelector(".resultText");
@@ -83,7 +93,8 @@ function congratulateWinner() {
   resultCircle.style.animation = null;
 
   if (result === "player") {
-    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 🎉 Congratulations, you won! 🥳`;
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 
+      🎉 Congratulations, you won! 🥳`;
     resultCircle.classList.add("win");
     playerScore++;
     updateFaviconForWin();
@@ -131,11 +142,15 @@ function congratulateWinner() {
       resultText.textContent = `🔥 ${playerScore} WINS! You're unstoppable! 🔥`;
     }
   } else if (result === "computer") {
-    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. Better luck next time! 🥀 You lost.`;
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 
+      Better luck next time! 🥀 You lost.`;
     resultCircle.classList.add("lose");
     computerScore++;
+    updateFaviconForLoss();
+
   } else {
-    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. It's a tie! 🤝 Care for another round?`;
+    resultText.textContent = `You chose ${playerChoice}, and the computer chose ${computerChoice}. 
+      It's a tie! 🤝 Care for another round?`;
     resultCircle.classList.add("tie");
   }
 
