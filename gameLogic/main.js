@@ -21,82 +21,82 @@ const scissorsButton = document.querySelector("#scissors");
 
 // CONGRATULATE WINNER STUFF
 const gameElements = {
-  resultCircle,
-  resultText,
-  playerScoreE1,
-  computerScoreE1,
-  updateFaviconForWin,
-  updateFaviconForLoss,
-  confetti,
-  scores: { playerScore: 0, computerScore: 0 },
+	resultCircle,
+	resultText,
+	playerScoreE1,
+	computerScoreE1,
+	updateFaviconForWin,
+	updateFaviconForLoss,
+	confetti,
+	scores: { playerScore: 0, computerScore: 0 },
 };
 // END OF CONGRATULATE WINNER STUFF
 
 function chooseForComputer() {
-  const randomNumber = Math.random() * 3;
-  if (randomNumber < 1) {
-    computerChoice = "rock";
-  } else if (randomNumber < 2) {
-    computerChoice = "paper";
-  } else {
-    computerChoice = "scissors";
-  }
-  console.log("Computer chose: " + computerChoice);
+	const randomNumber = Math.random() * 3;
+	if (randomNumber < 1) {
+		computerChoice = "rock";
+	} else if (randomNumber < 2) {
+		computerChoice = "paper";
+	} else {
+		computerChoice = "scissors";
+	}
+	console.log("Computer chose: " + computerChoice);
 }
 
 rockButton.addEventListener("click", () => {
-  console.log("Player chose: rock");
-  playerChoice = "rock";
+	console.log("Player chose: rock");
+	playerChoice = "rock";
 
-  chooseForComputer();
+	chooseForComputer();
 
-  if (playerChoice === computerChoice) {
-    result = "tie";
-  } else if (computerChoice === "paper") {
-    result = "computer";
-  } else {
-    result = "player";
-  }
+	if (playerChoice === computerChoice) {
+		result = "tie";
+	} else if (computerChoice === "paper") {
+		result = "computer";
+	} else {
+		result = "player";
+	}
 
-  playBattleAnimation(playerChoice, computerChoice, () => {
-    congratulateWinner(result, playerChoice, computerChoice, gameElements);
-  });
+	playBattleAnimation(playerChoice, computerChoice, () => {
+		congratulateWinner(result, playerChoice, computerChoice, gameElements);
+	});
 });
 
 paperButton.addEventListener("click", () => {
-  console.log("Player chose: paper");
-  playerChoice = "paper";
+	console.log("Player chose: paper");
+	playerChoice = "paper";
 
-  chooseForComputer();
+	chooseForComputer();
 
-  if (playerChoice === computerChoice) {
-    result = "tie";
-  } else if (computerChoice === "scissors") {
-    result = "computer";
-  } else {
-    result = "player";
-  }
+	if (playerChoice === computerChoice) {
+		result = "tie";
+	} else if (computerChoice === "scissors") {
+		result = "computer";
+	} else {
+		result = "player";
+	}
 
-  playBattleAnimation(playerChoice, computerChoice, () => {
-    congratulateWinner(result, playerChoice, computerChoice, gameElements);
-  });
+	playBattleAnimation(playerChoice, computerChoice, () => {
+		congratulateWinner(result, playerChoice, computerChoice, gameElements);
+	});
 });
 
 scissorsButton.addEventListener("click", () => {
-  console.log("Player chose: scissors");
-  playerChoice = "scissors";
+	console.log("Player chose: scissors");
+	playerChoice = "scissors";
 
-  chooseForComputer();
+	chooseForComputer();
 
-  if (playerChoice === computerChoice) {
-    result = "tie";
-  } else if (computerChoice === "rock") {
-    result = "computer";
-  } else {
-    result = "player";
-  }
+	if (playerChoice === computerChoice) {
+		result = "tie";
+	} else if (computerChoice === "rock") {
+		result = "computer";
+	} else {
+		result = "player";
+	}
 
-  playBattleAnimation(playerChoice, computerChoice, () => {
-    congratulateWinner(result, playerChoice, computerChoice, gameElements);
-  });
+	playBattleAnimation(playerChoice, computerChoice, () => {
+		congratulateWinner(result, playerChoice, computerChoice, gameElements);
+	});
 });
