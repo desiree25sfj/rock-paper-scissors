@@ -1,0 +1,36 @@
+header {
+	background: linear-gradient(90deg, #214920, #2d6a2c);
+	border-bottom: 2px #000000 solid;
+	box-shadow: 0 4px 10px #000000;
+	height: 80px;
+	margin-bottom: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@keyframes neonPulse {
+	0% {
+		text-shadow: 0 0 5px #000000, 0 0 15px #4caf50;
+	}
+	25% {
+		text-shadow: 0 0 6px #000000, 0 0 18px #81c784;
+	}
+	50% {
+		text-shadow: 0 0 5px #000000, 0 0 15px #4caf50;
+	}
+	75% {
+		text-shadow: 0 0 6px #000000, 0 0 18px #81c784;
+	}
+	100% {
+		text-shadow: 0 0 5px #000000, 0 0 15px #4caf50;
+	}
+}
+
+header h1 {
+	color: #d9d9d9;
+	-webkit-text-stroke: 2px #000000;
+	font-size: 48px;
+	letter-spacing: 6px;
+	animation: neonPulse 2s infinite ease-in-out alternate;
+}

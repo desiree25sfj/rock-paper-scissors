@@ -1,0 +1,31 @@
+.battle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	gap: 50px;
+	font-size: 4rem;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.battle.show {
+	opacity: 1;
+}
+
+.playerHand,
+.computerHand {
+	display: inline-block;
+	transform: scale(1);
+	transition: transform 0.3s ease;
+}
+
+.crown {
+	position: absolute;
+	top: -70px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 4rem;
+	display: none;
+}

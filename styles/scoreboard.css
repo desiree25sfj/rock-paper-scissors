@@ -1,0 +1,17 @@
+.resultText {
+	color: #d9d9d9;
+	font-size: 1rem;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.scoreboard {
+	color: #d9d9d9;
+	font-size: 1rem;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.scoreboard p {
+	margin: 5px 0;
+}
