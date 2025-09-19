@@ -8,8 +8,6 @@ function emojiToFavicon(emoji) {
 	return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
-// favicon.href = emojiToFavicon(defaultEmoji);
-
 function updateFaviconForWin() {
 	const favicon = document.querySelector("link[rel='icon']");
 	favicon.href = emojiToFavicon(winEmoji);
