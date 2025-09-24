@@ -14,3 +14,20 @@ body {
 	font-family: "Figtree", sans-serif;
 	background-color: #1e1e1e;
 }
+
+a.multiplayer {
+	display: inline-block;
+	background-color: #2d6a2c;
+	color: #1e1e1e;
+	text-decoration: none;
+	padding: 12px 24px;
+	border-radius: 6px;
+	font-size: 1rem;
+	cursor: pointer;
+	/* transition: background-color 0.1s; */
+}
+
+a.multiplayer:hover {
+	text-decoration: underline;
+	background-color: #214920;
+}
