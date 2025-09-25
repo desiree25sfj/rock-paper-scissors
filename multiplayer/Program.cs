@@ -1,20 +1,10 @@
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddCors(options =>
-{
-	options.AddDefaultPolicy(policy =>
-	{
-		policy.AllowAnyOrigin()
-		.AllowAnyHeader()
-		.AllowAnyMethod();
-	});
-});
-
 var app = builder.Build();
 
-app.UseCors();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.MapPost("/move", async (HttpContext context) =>
 {
@@ -29,14 +19,6 @@ app.MapPost("/move", async (HttpContext context) =>
 	await writer.WriteAsync(body);
 
 	return Results.Ok(new { status = "saved", data = body });
-});
-
-app.MapMethods("/move", new[] { "OPTIONS" }, (HttpContext context) =>
-{
-    context.Response.Headers["Access-Control-Allow-Origin"] = "*";
-    context.Response.Headers["Access-Control-Allow-Methods"] = "*";
-    context.Response.Headers["Access-Control-Allow-Headers"] = "*";
-    return Results.Ok();
 });
 
 app.Run();

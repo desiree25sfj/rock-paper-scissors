@@ -13,12 +13,12 @@ startButton.addEventListener("click", () => {
 moveButtons.forEach((button) => {
 	button.addEventListener("click", async (event) => {
 		event.preventDefault();
-		event.stopPropagation();
+		button.disabled = true;
 
 		const move = button.dataset.move;
 
 		try {
-			const response = await fetch("http://localhost:5258/move", {
+			const response = await fetch("/move", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ player1: move }),
@@ -32,7 +32,9 @@ moveButtons.forEach((button) => {
 			const result = await response.json();
 			console.log("Server response:", result);
 		} catch (err) {
-			console.error("Fetch error (won't reload page):", err);
+			console.error("Fetch error:", err);
+		} finally {
+			button.disabled = false;
 		}
 	});
 });

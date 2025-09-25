@@ -27,3 +27,5 @@ C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\multiplay
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\multiplayer.genruntimeconfig.cache
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\ref\multiplayer.dll
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\bin\Debug\net9.0\game.json
+C:\Koding\kartlegging\rock-paper-scissors\multiplayer\bin\Debug\net9.0\multiplayer.staticwebassets.runtime.json
+C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\compressed\ko68ugs5u8-6ol5lpug7e.gz
