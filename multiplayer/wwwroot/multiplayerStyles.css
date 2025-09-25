@@ -1,0 +1,271 @@
+
+/* MAIN */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Figtree", sans-serif;
+	background-color: #1e1e1e;
+}
+
+a.multiplayer {
+	display: inline-block;
+	background-color: #2d6a2c;
+	color: #1e1e1e;
+	text-decoration: none;
+	padding: 12px 24px;
+	border-radius: 6px;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+a.multiplayer:hover {
+	text-decoration: underline;
+	background-color: #214920;
+}
+
+/* BATTLE */
+.battle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	gap: 50px;
+	font-size: 4rem;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.battle.show {
+	opacity: 1;
+}
+
+.playerHand,
+.computerHand {
+	display: inline-block;
+	transform: scale(1);
+	transition: transform 0.3s ease;
+}
+
+.crown {
+	position: absolute;
+	top: -70px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 4rem;
+	display: none;
+}
+
+/* FOOTER */
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: left;
+	padding: 10px;
+	font-size: 0.8rem;
+	color: #d9d9d9b3;
+	background-color: #1e1e1e;
+}
+
+footer a {
+	color: #d9d9d9;
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+/* HEADER */
+header {
+	background: linear-gradient(90deg, #214920, #2d6a2c);
+	border-bottom: 2px #000000 solid;
+	box-shadow: 0 4px 10px #000000;
+	height: 80px;
+	margin-bottom: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@keyframes neonPulse {
+	0% {
+		text-shadow: 0 0 5px #000000, 0 0 15px #4caf50;
+	}
+	25% {
+		text-shadow: 0 0 6px #000000, 0 0 18px #81c784;
+	}
+	50% {
+		text-shadow: 0 0 5px #000000, 0 0 15px #4caf50;
+	}
+	75% {
+		text-shadow: 0 0 6px #000000, 0 0 18px #81c784;
+	}
+	100% {
+		text-shadow: 0 0 5px #000000, 0 0 15px #4caf50;
+	}
+}
+
+header h1 {
+	color: #d9d9d9;
+	-webkit-text-stroke: 2px #000000;
+	font-size: 48px;
+	letter-spacing: 6px;
+	animation: neonPulse 2s infinite ease-in-out alternate;
+}
+
+/* resultCircle */
+.resultCircle {
+	width: 300px;
+	height: 300px;
+	background: radial-gradient(circle at center, #2a2a2a, #1e1e1e);
+	border-radius: 50%;
+	box-shadow: 6px 6px 12px #000000;
+	margin: 50px auto 50px;
+	position: relative;
+	transition: box-shadow 200ms ease, background 200ms ease;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.04);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.resultCircle.win {
+	background: radial-gradient(circle at center, #2a2a2a, #1e1e1e);
+	box-shadow: 0 0 20px #214920, 0 0 40px #214920b3;
+	animation: pulse 200ms ease;
+}
+
+.resultCircle.lose {
+	background: radial-gradient(circle at center, #2a2a2a, #1e1e1e);
+	box-shadow: 0 0 20px #631717, 0 0 40px #631717b3;
+	animation: pulse 200ms ease;
+}
+
+.resultCircle.tie {
+	background: radial-gradient(circle at center, #2a2a2a, #1e1e1e);
+	box-shadow: 0 0 20px #887a1c, 0 0 40px #887a1cb3;
+	animation: pulse 200ms ease;
+}
+
+.resultCircle button {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: none;
+	background-color: transparent;
+	font-size: 4rem;
+	cursor: pointer;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#rock {
+	top: 40px;
+	left: 100px;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+#rock:hover {
+	transform: scale(1.1);
+	text-shadow: 6px 6px 12px #000000;
+}
+
+#paper {
+	bottom: 60px;
+	left: 40px;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+#paper:hover {
+	transform: scale(1.1);
+	text-shadow: 6px 6px 12px #000000;
+}
+
+#scissors {
+	bottom: 60px;
+	right: 40px;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+#scissors:hover {
+	transform: scale(1.1);
+	text-shadow: 6px 6px 12px #000000;
+}
+
+/* Multiplayer layout */
+
+#startButton {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 12px 24px;
+	font-size: 2rem;
+	border-radius: 8px;
+	border: none;
+	background-color: #214920;
+	color: #1e1e1e;
+	cursor: pointer;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+	z-index: 2;
+}
+
+#startButton:hover {
+	transform: translate(-50%, -50%) scale(1.05);
+	background-color: #214920b3;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+#moveButtons {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* SCOREBOARD */
+.resultText {
+	color: #d9d9d9;
+	font-size: 1rem;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.scoreboard {
+	color: #d9d9d9;
+	font-size: 1rem;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.scoreboard p {
+	margin: 5px 0;
+}
