@@ -24,7 +24,6 @@ a.multiplayer {
 	border-radius: 6px;
 	font-size: 1rem;
 	cursor: pointer;
-	/* transition: background-color 0.1s; */
 }
 
 a.multiplayer:hover {
