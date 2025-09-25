@@ -11,12 +11,15 @@ app.MapPost("/move", async (HttpContext context) =>
 	using var reader = new StreamReader(context.Request.Body);
 	var body = await reader.ReadToEndAsync();
 
-	var filePath = Path.Combine(Directory.GetCurrentDirectory(), "game.json");
+	var gamesFolder = Path.Combine(Directory.GetCurrentDirectory(), "games");
+	if (!Directory.Exists(gamesFolder))
+		Directory.CreateDirectory(gamesFolder);
+
+	// var fileName = $"game_{DateTime.Now:yyyyMMdd_HHmmssfff}.json";
+	var filePath = Path.Combine(gamesFolder, "currentGame.json");
 
 	// Load existing moves
-	// var existingData = new List<Dictionary<string, string>>();
 	List<Dictionary<string, string>> existingData = new();
-
 	if (File.Exists(filePath))
 	{
 		var json = await File.ReadAllTextAsync(filePath);
@@ -55,7 +58,7 @@ app.MapPost("/move", async (HttpContext context) =>
 
 app.MapGet("/moves", async () =>
 {
-	var filePath = Path.Combine(Directory.GetCurrentDirectory(), "game.json");
+	var filePath = Path.Combine(Directory.GetCurrentDirectory(), "games/currentGame.json");
 	if (!File.Exists(filePath))
 		return Results.Ok(new List<Dictionary<string, string>>());
 
