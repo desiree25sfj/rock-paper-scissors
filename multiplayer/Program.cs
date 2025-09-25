@@ -31,13 +31,12 @@ app.MapPost("/move", async (HttpContext context) =>
 	return Results.Ok(new { status = "saved", data = body });
 });
 
-app.MapMethods("/move", new[] { "OPTIONS" }, () =>
-		Results.Ok().WithHeaders(new Dictionary<string, string>
-		{
-			["Access-Control-Allow-Origin"] = "*",
-			["Access-Control-Allow-Methods"] = "*",
-			["Access-Control-Allow-Headers"] = "*"
-		})
-);
+app.MapMethods("/move", new[] { "OPTIONS" }, (HttpContext context) =>
+{
+    context.Response.Headers["Access-Control-Allow-Origin"] = "*";
+    context.Response.Headers["Access-Control-Allow-Methods"] = "*";
+    context.Response.Headers["Access-Control-Allow-Headers"] = "*";
+    return Results.Ok();
+});
 
 app.Run();
