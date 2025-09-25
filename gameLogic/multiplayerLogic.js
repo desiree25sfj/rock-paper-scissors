@@ -2,38 +2,43 @@ const startButton = document.getElementById("startButton");
 const moveButtonsContainer = document.getElementById("moveButtons");
 const moveButtons = document.querySelectorAll(".moveButton");
 
+// Start button logic
 startButton.addEventListener("click", () => {
 	startButton.style.display = "none";
 	moveButtonsContainer.style.display = "block";
 	moveButtonsContainer.classList.add("show");
+});
 
-	const rockButton = document.getElementById("rock");
+// Add click listener to all move buttons
+moveButtons.forEach((button) => {
+	button.addEventListener("click", async (event) => {
+		event.preventDefault();
+		event.stopPropagation();
 
-	rockButton.addEventListener("click", async () => {
-		const move = "rock";
-	
-		const response = await fetch("http://localhost:5258/move", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ player1: move }),
-		});
-	
-		const result = await response.json();
-		console.log("Server response:", result);
+		const move = button.dataset.move;
+
+		try {
+			const response = await fetch("http://localhost:5258/move", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ player1: move }),
+			});
+
+			if (!response.ok) {
+				console.error("Server returned an error:", response.status);
+				return;
+			}
+
+			const result = await response.json();
+			console.log("Server response:", result);
+		} catch (err) {
+			console.error("Fetch error (won't reload page):", err);
+		}
 	});
 });
 
-moveButtons.forEach((button) => {
-	button.addEventListener("click", async () => {
-		const move = button.dataset.move;
-
-		const response = await fetch("http://localhost:5258/move", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ player1: move }),
-		});
-
-		const result = await response.json();
-		console.log("Server response:", result);
-	});
+// Catch unhandled promise rejections
+window.addEventListener("unhandledrejection", (event) => {
+	console.log("Promise rejected:", event.reason);
+	event.preventDefault();
 });
