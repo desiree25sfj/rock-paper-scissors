@@ -1,1 +1,23 @@
-{"player1":"rock"}
+[
+  {
+    "player1": "rock"
+  },
+  {
+    "player1": "rock"
+  },
+  {
+    "player1": "paper"
+  },
+  {
+    "player1": "scissors"
+  },
+  {
+    "player1": "rock"
+  },
+  {
+    "player1": "paper"
+  },
+  {
+    "player1": "scissors"
+  }
+]
