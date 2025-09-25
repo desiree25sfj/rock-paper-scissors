@@ -26,3 +26,4 @@ C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\refint\mu
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\multiplayer.pdb
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\multiplayer.genruntimeconfig.cache
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\ref\multiplayer.dll
+C:\Koding\kartlegging\rock-paper-scissors\multiplayer\bin\Debug\net9.0\game.json
