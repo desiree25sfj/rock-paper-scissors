@@ -38,15 +38,16 @@ app.MapPost("/move", async (HttpContext context) =>
 	using var reader = new StreamReader(context.Request.Body);
 	var body = await reader.ReadToEndAsync();
 
-	var gamesFolder = Path.Combine(Directory.GetCurrentDirectory(), "games");
-	if (!Directory.Exists(gamesFolder))
-		Directory.CreateDirectory(gamesFolder);
+	// Deserialize the incoming move
+	var moveData = JsonSerializer.Deserialize<Dictionary<string, string>>(body);
+	if (moveData == null || (!moveData.ContainsKey("player1") && !moveData.ContainsKey("player2")))
+	{
+		return Results.BadRequest(new { status = "error", message = "Invalid JSON" });
+	}
 
-	// var fileName = $"game_{DateTime.Now:yyyyMMdd_HHmmssfff}.json";
+	// Load existing rounds
 	var filePath = Path.Combine(gamesFolder, "currentGame.json");
-
-	// Load existing moves
-	List<Dictionary<string, string>> existingData = new();
+	List<Dictionary<string, string>> rounds = new();
 	if (File.Exists(filePath))
 	{
 		var json = await File.ReadAllTextAsync(filePath);
@@ -54,34 +55,49 @@ app.MapPost("/move", async (HttpContext context) =>
 		{
 			try
 			{
-				existingData = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(json)!;
+				rounds = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(json)!;
 			}
 			catch
 			{
+				// fallback for single-move (old format)
 				var singleMove = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
 				if (singleMove != null)
-					existingData.Add(singleMove);
+				{
+					rounds.Add(new Dictionary<string, string>
+				{
+					{ "round", "1" },
+					{ "player1", singleMove.ContainsKey("player1") ? singleMove["player1"] : "" }
+				});
+				}
 			}
 		}
 	}
 
-	// Add the new move
-	var newMove = JsonSerializer.Deserialize<Dictionary<string, string>>(body);
-	if (newMove != null)
+	// Determine which round to update
+	if (rounds.Count == 0 || (moveData.ContainsKey("player1") || rounds[^1].ContainsKey("player2")))
 	{
-		existingData.Add(newMove);
+		var newRound = new Dictionary<string, string>
+	{
+		{ "round", (rounds.Count + 1).ToString() }
+	};
+		foreach (var kvp in moveData)
+			newRound[kvp.Key] = kvp.Value;
+
+		rounds.Add(newRound);
 	}
 	else
 	{
-		return Results.BadRequest(new { status = "error", message = "Invalid JSON" });
+		foreach (var kvp in moveData)
+			rounds[^1][kvp.Key] = kvp.Value;
 	}
 
-	// Save updated JSON back to file
-	var updatedJson = JsonSerializer.Serialize(existingData, new JsonSerializerOptions { WriteIndented = true });
+	// Save back to .json-file
+	var updatedJson = JsonSerializer.Serialize(rounds, new JsonSerializerOptions { WriteIndented = true });
 	await File.WriteAllTextAsync(filePath, updatedJson);
 
-	return Results.Ok(new { status = "saved", data = newMove });
+	return Results.Ok(new { status = "saved", data = moveData });
 });
+
 
 app.MapGet("/moves", async () =>
 {
