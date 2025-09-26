@@ -6,6 +6,33 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
+// Archiver setup
+var gamesFolder = Path.Combine(Directory.GetCurrentDirectory(), "games");
+if (!Directory.Exists(gamesFolder))
+	Directory.CreateDirectory(gamesFolder);
+
+// Background cleanup
+_ = Task.Run(async () =>
+{
+	while (true)
+	{
+		var currentFile = Path.Combine(gamesFolder, "currentGame.json");
+		if (File.Exists(currentFile))
+		{
+			var lastWrite = File.GetLastWriteTime(currentFile);
+			if (DateTime.Now - lastWrite > TimeSpan.FromMinutes(10)) // archived after 10 mins of inactivity
+			{
+				var timestampedName = $"game_{DateTime.Now:yyyyMMdd_HHmm}.json";
+				var newPath = Path.Combine(gamesFolder, timestampedName);
+				File.Move(currentFile, newPath);
+				Console.WriteLine($"Archived {currentFile} as {timestampedName}");
+			}
+		}
+		await Task.Delay(TimeSpan.FromMinutes(1)); // check every minute
+	}
+});
+
+
 app.MapPost("/move", async (HttpContext context) =>
 {
 	using var reader = new StreamReader(context.Request.Body);
