@@ -31,3 +31,5 @@ C:\Koding\kartlegging\rock-paper-scissors\multiplayer\bin\Debug\net9.0\multiplay
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\compressed\ko68ugs5u8-da022velrj.gz
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\compressed\i11pu6p7u1-iq11zavkgj.gz
 C:\Koding\kartlegging\rock-paper-scissors\multiplayer\obj\Debug\net9.0\compressed\9x78qtndmh-s5tb3bmy5a.gz
+C:\Koding\kartlegging\rock-paper-scissors\multiplayer\bin\Debug\net9.0\games\game_20250926_1014.json
+C:\Koding\kartlegging\rock-paper-scissors\multiplayer\bin\Debug\net9.0\games\currentGame.json

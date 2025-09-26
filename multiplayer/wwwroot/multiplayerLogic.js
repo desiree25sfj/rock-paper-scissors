@@ -2,6 +2,11 @@ const startButton = document.getElementById("startButton");
 const moveButtonsContainer = document.getElementById("moveButtons");
 const moveButtons = document.querySelectorAll(".moveButton");
 
+// Determine player
+let player = localStorage.getItem("player") || prompt("Are you Player 1 or 2? Type 1 or 2:");
+if (player !=="1" && player !== "2") player = "1";
+localStorage.setItem("player", player);
+
 // Start button logic
 startButton.addEventListener("click", () => {
 	startButton.style.display = "none";
@@ -21,7 +26,7 @@ moveButtons.forEach((button) => {
 			const response = await fetch("/move", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ player1: move }),
+				body: JSON.stringify({ ["player" + player]: move }),
 			});
 
 			if (!response.ok) {
