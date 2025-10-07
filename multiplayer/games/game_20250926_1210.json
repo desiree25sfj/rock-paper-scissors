@@ -13,19 +13,19 @@
   },
   {
     "round": "4",
-    "player1": "rock"
-  },
-  {
-    "round": "5",
-    "player1": "paper"
-  },
-  {
-    "round": "6",
     "player1": "scissors"
   },
   {
-    "round": "7",
+    "round": "5",
     "player1": "rock"
+  },
+  {
+    "round": "6",
+    "player1": "paper"
+  },
+  {
+    "round": "7",
+    "player1": "scissors"
   },
   {
     "round": "8",
@@ -38,5 +38,13 @@
   {
     "round": "10",
     "player1": "scissors"
+  },
+  {
+    "round": "11",
+    "player1": "rock"
+  },
+  {
+    "round": "12",
+    "player1": "paper"
   }
 ]
